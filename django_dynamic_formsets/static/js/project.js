@@ -7,7 +7,7 @@ function updateElementIndex(el, prefix, ndx) {
     if (el.name) el.name = el.name.replace(id_regex, replacement);
 }
 
-function addForm(btn, prefix, select_post_processing) {
+function addForm(btn, prefix) {
     var formCount = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
     var row = $('.dynamic-form-adder').clone(true).get(0);
     //change the cloned row class name
@@ -31,9 +31,6 @@ function addForm(btn, prefix, select_post_processing) {
     });
     $('#id_' + prefix + '-TOTAL_FORMS').val(formCount + 1);
     $('#dynamic_form_table tbody').append($(row));
-    if (select_post_processing == true) {
-        selectPostProcessing(formCount);
-    }
     return false;
 }
 
