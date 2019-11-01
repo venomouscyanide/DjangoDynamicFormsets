@@ -58,6 +58,33 @@
     </div>
   </form>
 
+  <br>
+  <br>
+  {# Table that simply displays the existing data in the Example2Model #}
+  <div class="container">
+    <h6 style="text-align: center; font-weight: bold">Data saved so far</h6>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email ID</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for data in existing_example_2_data %}
+        <tr>
+          <td> {{ data.name }} </td>
+          <td> {{ data.email }}</td>
+          <td> {{ data.address }}</td>
+          <td> {{ data.phone_number }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
   {# The empty form that gets added to the HTML once add button is clicked #}
   <table class="table table-striped">
     <tbody>

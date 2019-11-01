@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views import View
 
 from django_dynamic_formsets.example_files.forms import ExampleForm1, ExampleForm2
+from django_dynamic_formsets.users.models import Example2Model
 
 
 class Example1(View):
@@ -49,8 +50,14 @@ class Example2(View):
     def _generate_context(self, example_2_formset=None):
         example_2_formset = self._get_formset()(
             prefix=self.EXAMPLE_2_PREFIX) if not example_2_formset else example_2_formset
-        context = {self.EXAMPLE_2_PREFIX: example_2_formset}
+        existing_data_dict = self._fetch_existing()
+        context = {self.EXAMPLE_2_PREFIX: example_2_formset,
+                   'existing_example_2_data': existing_data_dict}
         return context
 
     def _get_formset(self):
         return formset_factory(ExampleForm2, extra=1)
+
+    def _fetch_existing(self):
+        existing_data = Example2Model.objects.all()
+        return existing_data
