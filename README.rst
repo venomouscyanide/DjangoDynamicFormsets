@@ -30,3 +30,9 @@ Issues
   
 Future Work/ Bug fixes
   Any work related are welcome through PR's :D
+
+Steps to start up the webapp::
+
+    - Clone the project.
+    - docker-compose -f local.yml build
+    - docker-compose -f local.yml up
