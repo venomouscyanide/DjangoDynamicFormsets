@@ -26,6 +26,5 @@ class ExampleForm1(forms.Form):
         widget=forms.ClearableFileInput(attrs={'multiple': True})
     )
 
-    layout = Layout(Row('array_of_elements'),
-                    Row('output_column_name'),
+    layout = Layout(Row('array_of_elements', 'output_column_name'),
                     Row('file_field'))
