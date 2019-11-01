@@ -1,6 +1,5 @@
 from django import forms
-from django.contrib.postgres.forms import SimpleArrayField, ValidationError
-from django.core.validators import FileExtensionValidator
+from django.contrib.postgres.forms import SimpleArrayField
 from material import Row, Layout
 
 from django_dynamic_formsets.users.models import Example2Model
