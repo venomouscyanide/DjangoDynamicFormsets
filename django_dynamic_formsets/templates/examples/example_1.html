@@ -1,3 +1,4 @@
+{# This example does not contain any backend implementation! #}
 {% extends 'base.html' %}
 
 {% load material_form %}
@@ -5,7 +6,8 @@
 
 {% block content %}
 
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  {# Initialize the dynamic addition JS  #}
+  {# Please do not forget to include the jquery-1.11.0.min.js. In this case it is already present in base.html #}
   <script src="{% static "js/dynamic_formsets.js" %}"></script>
   <script type="text/javascript">
     $(function () {
@@ -21,8 +23,10 @@
   <h4 style="text-align: center"> Charfields, FileFields and ArrayFields!</h4>
   <form method="POST" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
+    {# Setup the management form to track number of TOTAL_FORMS, INITIAL_FORMS etc..  #}
     {{ example_1_formset.management_form }}
 
+    {# Contruct a table using your form. One col contains the form. The other one contains the delete button to delete this form   #}
     <table class="table table-striped" id="dynamic_form_table">
       <tbody>
       {% for form in example_1_formset.forms %}
@@ -42,13 +46,16 @@
       </tbody>
     </table>
 
+    {# The add button to dynamically add the form   #}
     <div class="container">
       <button class="add-row btn mx-auto" id="center-button">+ Add Brand
       </button>
+      <code>Backend not handled. Please refer to the second example to get an idea :D</code>
     </div>
 
   </form>
 
+  {# The empty form that gets added to the HTML once add button is clicked #}
   <table class="table table-striped">
     <tbody>
     <tr class="dynamic-form-adder" style="display: none">
@@ -57,7 +64,7 @@
         {% endform %}
       </td>
       <td id="delete-button">
-        <button id="remove-example_1_formset-__prefix__-row"
+        <button id="remove-{{ example_1_formset.prefix }}-__prefix__-row"
                 class="delete-row btn">Delete
         </button>
       </td>
