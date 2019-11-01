@@ -4,7 +4,6 @@ from django.db.models import CharField, Model
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from phone_field import PhoneField
 
 
 class User(AbstractUser):
