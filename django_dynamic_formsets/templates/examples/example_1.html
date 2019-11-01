@@ -10,7 +10,7 @@
   <script type="text/javascript">
     $(function () {
       $('.add-row').click(function () {
-        return addForm(this, 'example_1_formset', false);
+        return addForm(this, 'example_1_formset');
       });
       $('.delete-row').click(function () {
         deleteForm(this, 'example_1_formset');
@@ -57,7 +57,7 @@
         {% endform %}
       </td>
       <td id="delete-button">
-        <button id="remove-find_and_replace_form_set-__prefix__-row"
+        <button id="remove-example_1_formset-__prefix__-row"
                 class="delete-row btn">Delete
         </button>
       </td>
