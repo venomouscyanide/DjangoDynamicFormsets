@@ -3,6 +3,8 @@ from django.contrib.postgres.forms import SimpleArrayField, ValidationError
 from django.core.validators import FileExtensionValidator
 from material import Row, Layout
 
+from django_dynamic_formsets.users.models import Example2Model
+
 
 class ExampleForm1(forms.Form):
     array_of_elements = SimpleArrayField(
@@ -28,3 +30,19 @@ class ExampleForm1(forms.Form):
 
     layout = Layout(Row('array_of_elements', 'output_column_name'),
                     Row('file_field'))
+
+
+class ExampleForm2(forms.ModelForm):
+    class Meta:
+        model = Example2Model
+        fields = ('name', 'email', 'address', 'phone_number')
+        help_texts = {
+            'name': 'Your name',
+            'email': 'Your email address',
+            'address': 'Your Address',
+            'phone_number': 'Your Phone Number'
+        }
+        layout = Layout(Row('name'),
+                        Row('email'),
+                        Row('address'),
+                        Row('phone_number'))

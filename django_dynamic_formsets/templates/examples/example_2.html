@@ -1,4 +1,4 @@
-{# This example does not contain any backend implementation! #}
+{# This example contains the backend implementation! #}
 {% extends 'base.html' %}
 
 {% load material_form %}
@@ -12,31 +12,30 @@
   <script type="text/javascript">
     $(function () {
       $('.add-row').click(function () {
-        return addForm(this, 'example_1_formset');
+        return addForm(this, 'example_2_formset');
       });
       $('.delete-row').click(function () {
-        deleteForm(this, 'example_1_formset');
+        deleteForm(this, 'example_2_formset');
       })
     })
   </script>
-
-  <h4 style="text-align: center"> Charfields, FileFields and ArrayFields!</h4>
+  <h4 style="text-align: center"> Form with actual saving!</h4>
   <form method="POST" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
     {# Setup the management form to track number of TOTAL_FORMS, INITIAL_FORMS etc..  #}
-    {{ example_1_formset.management_form }}
+    {{ example_2_formset.management_form }}
 
     {# Contruct a table using your form. One col contains the form. The other one contains the delete button to delete this form   #}
     <table class="table table-striped" id="dynamic_form_table">
       <tbody>
-      {% for form in example_1_formset.forms %}
+      {% for form in example_2_formset.forms %}
         <tr class="dynamic-form">
-          <td>
+          <td class="col-sm-8">
             {% form form=form %}
             {% endform %}
           </td>
 
-          <td id="delete-button">
+          <td id="delete-button" class="col-sm-4">
             <button id="remove-{{ form.prefix }}-row"
                     class="delete-row btn">Delete
             </button>
@@ -51,21 +50,24 @@
       <button class="add-row btn mx-auto" id="center-button">+ Add Brand
       </button>
       <br>
-      <code>Backend not handled. Please refer to the second example to get an idea.</code>
+      <code>Don't worry. Not a single thing will be sent to me. This is just a demo.</code>
     </div>
 
+    <div class="card">
+      <button type="submit" class="btn btn-lg" id="center-button">Submit</button>
+    </div>
   </form>
 
   {# The empty form that gets added to the HTML once add button is clicked #}
   <table class="table table-striped">
     <tbody>
-    <tr class="dynamic-form-adder" style="display: none">
+    <tr class="dynamic-form-adder col-sm-8" style="display: none">
       <td>
-        {% form form=example_1_formset.empty_form %}
+        {% form form=example_2_formset.empty_form %}
         {% endform %}
       </td>
-      <td id="delete-button">
-        <button id="remove-{{ example_1_formset.prefix }}-__prefix__-row"
+      <td id="delete-button" class="col-sm-2">
+        <button id="remove-{{ example_2_formset.prefix }}-__prefix__-row"
                 class="delete-row btn">Delete
         </button>
       </td>
