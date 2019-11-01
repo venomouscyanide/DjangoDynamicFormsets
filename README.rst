@@ -16,7 +16,9 @@ An easy way to implement dynamic formsets in Django.
 
 Inspired from https://github.com/elo80ka/django-dynamic-formset, extended to support Django 2.2.6.
 
-Please refer to the Wiki for implementation detail. This project includes two examples to get you started:
+**Please refer to the Wiki for implementation detail.**
+
+This project includes two examples to get you started:
 
 - Example1 - Implementation of Dynamic formset without backend saving.
 - Example2 - Implementation of Dynamic formset with saving to the DB. 
